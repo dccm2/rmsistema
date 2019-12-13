@@ -76,12 +76,12 @@ WSGI_APPLICATION = 'rmsistema.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'rosa_mistica',
-        'USER': 'postgres',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'rosa_mistica/development.sqlite3',
+        'USER': 'root',
         'PASSWORD': '123456',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '',
     }
 }
 
