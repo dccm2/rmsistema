@@ -1,0 +1,13 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Eliminar Inscrito{% endblock titulo %}
+      {% block body %}
+      <div class="container">
+      <form class="form-control-plaintext" method="post" action="">
+        {% csrf_token %}
+        <h3>¿Desea Eliminar el Registro de {{ object.id }}?</h3>
+        <button class="btn btn-primary" type="submit" href="{% url 'inscrito_listar' %}">Aceptar</button>
+        <a class="btn btn-dark" href="{% url 'inscrito_listar' %}">Cancelar</a>
+      </form>
+      </div>
+      {% endblock body %}

@@ -1,0 +1,14 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Registrar Curso{% endblock titulo %}
+  {% block body %}
+      <div class="container">
+      <form class="form-control-plaintext" method="post" action="" >
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-dark" href="{% url 'curso_listar' %}">Cancelar</a>
+      </form>
+      </div>
+     {% endblock body %}
+     

@@ -1,0 +1,47 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Ugel{% endblock titulo %}
+      {% block body %}
+
+    <div id="content-wrapper">
+      <div class="container">
+        <div class="row">
+           <div class="col-md-9">
+              <h1>Resultados:</h1>
+           </div>
+           <div class="col-md-3">
+              <a href="{% url 'ugel_crear' %}" class="btn btn-primary">Añadir Ugel</a>
+           </div>
+        </div>
+        <table class="table" id="myTable">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ugel</th>
+              <th scope="col">Director</th>
+              <th>  </th>    
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+            {% for Ugel in object_list %}
+              <tr>
+                <th scope="row">{{ Ugel.id }}</th>
+                <td><a href="{% url 'ugel_editar' Ugel.id %}">{{ Ugel.ugel }}</a></td>
+                <td>{{ Ugel.director }}</td>
+                <td>
+                  <a class="btn btn-danger" href="{% url 'ugel_eliminar' Ugel.id %}">Eliminar</a>
+                </td>  
+                </tr>
+            {% endfor %}
+            {% else %}
+            <div class="row">
+              <div class="col-md-9">
+                <h3>No hay Registros de Ugel</h1>
+              </div>
+            </div> 
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      {% endblock body %}

@@ -1,0 +1,70 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Registrar Matricula{% endblock titulo %}
+  {% block body %}
+      <div class="container text-center">
+        <div class="jumbotron">
+          <center>
+          <div class="text-center" style="max-width:70%">
+            <form class="form-group" method="post" action="" >
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-primary" type="submit">Guardar</button>
+              <a class="btn btn-dark" href="{% url 'matricula_listar' %}">Cancelar</a>
+              <!--<table class="table form-table table-bordered table-sm">
+                            <thead class="text-center">
+                            <tr>
+                                <th>Descripcion</th>
+                                <th>Fecha de Pago</th>
+                                <th>Monto</th>
+                                <th>Modulo Entregado</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for form_data in formset %}
+                                <tr class="item">
+                                    <td>
+                                        {{ form_data.descripcion }}
+                                    </td>
+                                    <td>
+                                        {{ form_data.fecha_pago }}
+                                    </td>
+                                    <td>
+                                      {{ form_data.monto }}
+                                    </td>
+                                    <td>
+                                      {{ form_data.mod_entregado }}
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-danger btn-sm remove-form-row"
+                                                id="{{ formset.prefix }}">
+                                          
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            <tr>
+                                <td colspan="9"
+                                    style="border-left: none!important; border-right: none !important; border-bottom: none!important;">
+                                    <button type="button" class="btn btn-sm btn-success add-form-row"
+                                            id="{{ formset.prefix }}">
+                                       Add
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        {{ formset.management_form }}
+
+    <button type="submit">Submit</button>-->
+            </form>
+          </div>
+        </div>
+      </div>
+
+  {% endblock body %}
+  <!--{% block extra_script %}
+  <script type="text/javascript" src="{% static 'js/formset.js' %}"></script>
+{% endblock%}

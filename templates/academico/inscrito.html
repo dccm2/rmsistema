@@ -1,0 +1,48 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Inscritos{% endblock titulo %}
+       {% block body %}
+      <div class="container">
+        <div class="row">
+           <div class="col-md-9">
+              <h1>Resultados:</h1>
+           </div>
+           <div class="col-md-3">
+              <a href="{% url 'inscrito_crear' %}" class="btn btn-primary">Añadir Participante</a>
+           </div>
+        </div>
+        <table class="table" id="myTable">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Código</th>
+              <th scope="col">Nombres</th>
+              <th scope="col">Apellidos</th>
+              <th scope="col">Correo Electrónico</th>
+              <th scope="col">Telefono</th>
+              <th>  </th>    
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+            {% for Inscrito in object_list %}
+              <tr>
+                <td>{{ Inscrito.id }}</td>
+                <th scope="row"><a href="{% url 'inscrito_editar' Inscrito.id %}">{{ Inscrito.apellidos }}</a></th>
+                <td>{{ Inscrito.nombres }}</td>
+                <td>{{ Inscrito.e_mail }}</td>
+                <td>{{ Inscrito.telefono}}</td>
+                <td><a class="btn btn-danger btn-xs" href="{% url 'inscrito_eliminar' Inscrito.id %}">Eliminar</a></td>
+                </tr>
+            {% endfor %}
+            {% else %}
+            <div class="row">
+              <div class="col-md-9">
+                <h3>No hay Registros de Inscritos</h1>
+              </div>
+            </div> 
+            {% endif %}
+          </tbody>
+        </table>
+      </div>            
+      {% endblock body %}
+      

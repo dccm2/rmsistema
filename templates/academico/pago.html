@@ -1,0 +1,52 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Pagos{% endblock titulo %}
+      {% block body %}
+
+    <div id="content-wrapper">
+      <div class="container">
+        <div class="row">
+           <div class="col-md-9">
+              <h1>Pagos:</h1>
+              <h5>Filtra la búsqueda por Código de Matrícula:</h5>
+           </div>
+           <div class="col-md-3">
+              <a href="{% url 'pago_crear' %}" class="btn btn-primary">Añadir Pago</a>
+           </div>
+        </div>
+        <table class="table" id="myTable">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Código de Matrícula</th>
+              <th scope="col">Descripción</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Módulo Entregado</th>
+              <th>  </th>    
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+            {% for Pago in object_list %}
+              <tr>
+                <th scope="row">{{ Pago.id }}</th>
+                <td><a href="{% url 'matricula_editar' Pago.matricula %}">{{ Pago.matricula }}</td>
+                <td><a href="{% url 'pago_editar' Pago.id %}">{{ Pago.descripcion }}</a></td>
+                <th scope="row">{{ Pago.monto }}</th>
+                <th scope="row">{{ Pago.mod_entregado}}</th>
+                <td>
+                  <a class="btn btn-danger" href="{% url 'pago_eliminar' Pago.id %}">Eliminar</a>
+                </td>  
+                </tr>
+            {% endfor %}
+            {% else %}
+            <div class="row">
+              <div class="col-md-9">
+                <h3>No hay Registros de Pagos</h1>
+              </div>
+            </div> 
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      {% endblock body %}

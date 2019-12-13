@@ -1,0 +1,44 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Cursos{% endblock titulo %}
+      {% block body %}
+
+      <div class="container">
+        <div class="row">
+           <div class="col-md-9">
+              <h1>Resultados:</h1>
+           </div>
+           <div class="col-md-3">
+              <a href="{% url 'curso_crear' %}" class="btn btn-primary">Añadir Curso</a>
+           </div>
+        </div>
+        <table class="table" id="myTable">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Curso</th>
+              <th>  </th>    
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+            {% for Curso in object_list %}
+              <tr>
+                <th scope="row">{{ Curso.id }}</th>
+                <td><a href="{% url 'curso_editar' Curso.id %}">{{ Curso.nombre }}</a></td>
+                <td>
+                  <a class="btn btn-danger" href="{% url 'curso_eliminar' Curso.id %}">Eliminar</a>
+                </td>  
+                </tr>
+            {% endfor %}
+            {% else %}
+            <div class="row">
+              <div class="col-md-9">
+                <h3>No hay Registros de Inscritos</h1>
+              </div>
+            </div> 
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+      {% endblock body %}

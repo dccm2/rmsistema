@@ -1,0 +1,16 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+  {% block titulo %}Inscritos{% endblock titulo %}
+       {% block body %}
+
+    <div id="content-wrapper">
+      <div class="container">
+      <form class="form-control-plaintext" method="post" action="">
+        {% csrf_token %}
+        <h3>¿Desea Eliminar el Registro de Ugel {{ object.nombre }}?</h3>
+        <button class="btn btn-primary" type="submit" href="{% url 'ugel_listar' %}">Aceptar</button>
+        <a class="btn btn-dark" href="{% url 'ugel_listar' %}">Cancelar</a>
+      </div>
+        
+      </form>
+      {% endblock body %}

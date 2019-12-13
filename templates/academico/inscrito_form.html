@@ -1,0 +1,73 @@
+{% extends 'academico/index.html' %}
+{% load staticfiles %}
+
+ {% block titulo %}Añadir Inscrito{% endblock titulo %}
+
+      {% block body %}
+      <!-- Tab links -->
+      <div class="container">
+      <div class="tab">
+        <button class="tablinks" onclick="Open(event, 'Datos')">Datos</button>
+        <button class="tablinks" onclick="Open(event, 'Matriculas')">Matriculas</button>
+      </div>
+
+      <!-- Tab content -->
+      <div id="Datos" class="tabcontent" >
+      <div class="container text-center">
+        <div class="jumbotron">
+          <center>
+          <div class="text-center" style="max-width:70%">
+            <form class="form-group" method="post" action="" >
+              {% csrf_token %}
+              {{form.as_p}}
+              <button class="btn btn-primary" type="submit">Guardar</button>
+              <a class="btn btn-dark" href="{% url 'inscrito_listar' %}">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!--<div id="Matriculas" class="tabcontent" >
+        <div class="container">
+          <div class="row">
+              <div class="col-md-9"><h3>Matrículas</h3></div>
+              <div class="col-md-3">
+              <a href="{% url 'matricula_crear' %}" class="btn btn-primary">Añadir Matrícula</a>
+           </div>
+          </div>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Inscrito</th>
+              <th scope="col">Curso</th>
+              <th scope="col">Fecha de Matrícula</th>
+              <th>  </th>    
+            </tr>
+          </thead>
+          <tbody>
+            {% if object_list %}
+              {% for Matricula in object_list %}
+                <tr>
+                  <td scope="row" ><a href="{% url 'matricula_editar' Matricula.id %}">{{ Matricula.id }}</a></td>
+                  <td>{{ Matricula.inscrito }}</td>
+                  <td>{{ Matricula.curso }}</td>
+                  <td>{{ Matricula.fecha_matricula }}</td>
+                  <td><a class="btn btn-danger btn-xs" href="{% url 'matricula_eliminar' Matricula.id %}">Eliminar</a></td>
+                  </tr>
+              {% endfor %}
+            {% else %}
+            <div class="row">
+              <div class="col-md-9">
+                <h3>No hay Registros de Matrículas</h1>
+              </div>
+            </div> 
+            {% endif %}
+          </tbody>
+        </table>
+      </div> 
+      </div>
+    </div>-->
+      {% endblock body %}
+      
